@@ -9,6 +9,7 @@ const UserErrors = {
   EmailInvalid: "Formato de correo electrónico inválido.",
   PasswordInvalid: "La contraseña debe tener al menos 6 caracteres.",
   MissingCredentials: "Los datos son incorrectos",
+  UserDisabled: "Usuario desactivado.",
 };
 
 const DataBaseErrors = {
@@ -17,6 +18,7 @@ const DataBaseErrors = {
 
 const GenericErrors = {
   ValidationError: "Error de validación.",
+  RolDenied: "Acceso no autorizado.",
   ServerError: "Error interno del servidor"
 };
 

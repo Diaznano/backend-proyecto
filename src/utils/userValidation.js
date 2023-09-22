@@ -2,7 +2,7 @@
 const { UserRole } = require("../models/User");
 const { UserErrors } = require("./errorsMessage");
 
-function validateUserFields(name, email, password, role) {
+function validateUserFields({ name, email, password, role, isUpdate = false }) {
   const errors = [];
   if (!name) {
     errors.push(UserErrors.NameRequired);
@@ -10,7 +10,7 @@ function validateUserFields(name, email, password, role) {
   if (!email) {
     errors.push(UserErrors.EmailRequired);
   }
-  if (!password) {
+  if (!password && !isUpdate) {
     errors.push(UserErrors.PasswordRequired);
   }
 
@@ -23,7 +23,7 @@ function validateUserFields(name, email, password, role) {
     errors.push(UserErrors.EmailInvalid);
   }
 
-  if (password?.length < 6) {
+  if (password?.length < 6 && !isUpdate) {
     errors.push(UserErrors.PasswordInvalid);
   }
 

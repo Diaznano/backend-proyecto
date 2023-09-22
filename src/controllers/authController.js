@@ -22,10 +22,15 @@ exports.login = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: UserErrors.InvalidCredentials });
     }
+    if (!user.dataValues.isActive) {
+      return res.status(401).json({ message: UserErrors.UserDisabled });
+    }
 
     delete user.dataValues.password;
+    delete user.dataValues.createdAt;
+    delete user.dataValues.updatedAt;
 
-    const token = jwt.sign({ userId: user.id }, jwtSecret, {
+    const token = jwt.sign({ user }, jwtSecret, {
       expiresIn: process.env.EXPIRESIN,
     });
 
