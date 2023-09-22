@@ -12,6 +12,14 @@ const UserErrors = {
   UserDisabled: "Usuario desactivado.",
 };
 
+const ProductErrors = {
+  ProductRequired: "Todos los campos son obligatorios.",
+  NumberPositive: "El precio debe ser un número positivo.",
+  CategoryInvalid: "Categoría no válida.",
+  StockPositive: "El stock debe ser un número no negativo.",
+  ProductNotFound: "Producto no encontrado",
+};
+
 const DataBaseErrors = {
   DatabaseError: "Error de la base de datos.",
 };
@@ -27,4 +35,4 @@ const TokenErrors = {
   TokenInvalid: "Token de autenticación no válido",
 };
 
-module.exports = { UserErrors, DataBaseErrors, GenericErrors, TokenErrors };
+module.exports = { UserErrors, DataBaseErrors, GenericErrors, TokenErrors, ProductErrors };

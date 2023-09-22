@@ -5,9 +5,11 @@ const { UserRole } = require("../models/User");
 
 const router = express.Router();
 
-router.post("/", authenticate([UserRole.ADMIN]), createUser);
-router.put("/:id", authenticate([UserRole.ADMIN]), updateUser);
-router.get("/", authenticate([UserRole.ADMIN]), getUsers);
-router.delete("/:id", authenticate([UserRole.ADMIN]), deleteUser);
+router.use(authenticate([UserRole.ADMIN]));
+
+router.post("/", createUser);
+router.put("/:id", updateUser);
+router.get("/", getUsers);
+router.delete("/:id", deleteUser);
 
 module.exports = router;
