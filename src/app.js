@@ -12,9 +12,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
-app.use("/products", productRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 sequelize
   .sync()
