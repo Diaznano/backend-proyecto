@@ -1,29 +1,36 @@
 module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es2021: true,
-    node: true, 
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-  ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaVersion: 2021, 
+  "extends": "eslint:recommended",
+  "globals": {
+    "process": true, 
   },
-  plugins: [
-    "@typescript-eslint",
+  "overrides": [
+    {
+      "env": {
+        "node": true
+      },
+      "files": [
+        ".eslintrc.{js,cjs}"
+      ],
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    }
   ],
-  rules: {
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
     "no-console": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "error",
+    'object-curly-spacing': ['error', 'always'],
     semi: ["error", "always"],
-    "@typescript-eslint/no-var-requires": "off",
     quotes: ["error", "double"],
     indent: ["error", 2],
-    "comma-dangle": ["error", "always-multiline"],
     "no-multiple-empty-lines": ["error", { max: 2, maxBOF: 1, maxEOF: 0 }],
-  },
+  }
 };
